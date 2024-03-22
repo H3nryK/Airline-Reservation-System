@@ -8,7 +8,6 @@ This is a simple C++ program for an Airline Seat Reservation System. It allows u
 - Display available seats in each class
 - Choose preferred seat number within available seats
 - Display boarding pass with seat number and class
-- Error handling for invalid inputs
 - Exit option to end the program
 
 ## How to Use
