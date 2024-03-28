@@ -65,9 +65,9 @@ void reserveSeat(int seatType, bool seats[])
 {
     int seatNumber;
     if (seatType == 1){
-        //Business Class
-        cout<<"\n Reserving a seat in Business class...\n\n";
-        for (int i=0; i<BUSINESS_CLASS_CAPAITY; ++i){
+        // Business Class
+        cout << "\nReserving a seat in Business class...\n\n";
+        for (int i = 0; i < BUSINESS_CLASS_CAPACITY; ++i){
             if (!seats[i]){
                 seats[i] = true;
                 seatNumber = i + 1;
@@ -77,8 +77,8 @@ void reserveSeat(int seatType, bool seats[])
         }
     } else if (seatType == 2){
         // Economy Class
-        cout<<"\n Reserving a seat in Economy class...\n";
-        for (int i=BUSINESS_CLASS_CAPAITY; i<TOTAL_SEATS; ++i){
+        cout << "\nReserving a seat in Economy class...\n";
+        for (int i = BUSINESS_CLASS_CAPACITY; i < TOTAL_SEATS; ++i){
             if (!seats[i]){
                 seats[i] = true;
                 seatNumber = i + 1;
@@ -90,14 +90,27 @@ void reserveSeat(int seatType, bool seats[])
 
     if (!isAllSeatsReserved(seats)){
         char choice;
-        cout<<"\n Would you like to reserve a seat in the other Class? (y/n) ";
-        cin>>choice;
+        cout << "\nWould you like to reserve a seat in the other Class? (y/n) ";
+        cin >> choice;
         if (choice == 'n'){
-            cout<<"\n Exiting program.\n";
-            exit(0);
+            cout << "\nExiting program.\n";
+            return; // Exit the function if the user chooses not to reserve a seat in the other class
         }
     }
+
+    // If the user chooses to reserve a seat in the other class, prompt them to select the seat type again
+    int newSeatType;
+    do {
+        cout << "\nSelect the class to reserve a seat (1 for Business, 2 for Economy): ";
+        cin >> newSeatType;
+        if (newSeatType != 1 && newSeatType != 2) {
+            cout << "Invalid choice. Please try again.\n";
+        }
+    } while (newSeatType != 1 && newSeatType != 2);
+
+    reserveSeat(newSeatType, seats); // Recursive call to reserveSeat with the new seatType
 }
+
 
 void displayBoardingPass(int seatNumber, int seatType)
 {
