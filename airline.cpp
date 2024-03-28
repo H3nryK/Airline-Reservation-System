@@ -67,7 +67,7 @@ void reserveSeat(int seatType, bool seats[])
     if (seatType == 1){
         // Business Class
         cout << "\nReserving a seat in Business class...\n\n";
-        for (int i = 0; i < BUSINESS_CLASS_CAPACITY; ++i){
+        for (int i = 0; i < BUSINESS_CLASS_CAPAITY; ++i){
             if (!seats[i]){
                 seats[i] = true;
                 seatNumber = i + 1;
@@ -78,7 +78,7 @@ void reserveSeat(int seatType, bool seats[])
     } else if (seatType == 2){
         // Economy Class
         cout << "\nReserving a seat in Economy class...\n";
-        for (int i = BUSINESS_CLASS_CAPACITY; i < TOTAL_SEATS; ++i){
+        for (int i = BUSINESS_CLASS_CAPAITY; i < TOTAL_SEATS; ++i){
             if (!seats[i]){
                 seats[i] = true;
                 seatNumber = i + 1;
